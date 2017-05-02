@@ -47,9 +47,9 @@ public abstract class SetupBaseActivity extends AppCompatActivity {
                 return  true;
             }
             if(endX-startX>100){
-                next_activity();
-            }else  if(startX-endX>100){
                 pre_activity();
+            }else  if(startX-endX>100){
+                next_activity();
             }
 
             return true;

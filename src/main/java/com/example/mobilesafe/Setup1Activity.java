@@ -23,7 +23,7 @@ public class Setup1Activity extends SetupBaseActivity {
         Intent intent = new Intent(this,Setup2Activity.class);
         startActivity(intent);
         finish();
-        //overridePendingTransition();
+        overridePendingTransition(R.anim.tran_next_enter,R.anim.tran_next_exit);
     }
 
     @Override

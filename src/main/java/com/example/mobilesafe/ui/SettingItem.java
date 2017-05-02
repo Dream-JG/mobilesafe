@@ -63,7 +63,10 @@ public class SettingItem extends RelativeLayout {
     }
 
     public void setChecked(boolean flag) {
-     checkBox.setSelected(flag);
+        //System.out.println("###flag:"+flag);
+        checkBox.setChecked(flag);
+        //System.out.println("###chenkbox:"+checkBox.isChecked());
+        //System.out.println("#####des:"+tvDes);
         if (checkBox.isChecked()){
             tvDes.setText(desOn);
         }else {
@@ -71,6 +74,7 @@ public class SettingItem extends RelativeLayout {
         }
     }
     public boolean checked(){
+        //System.out.println("@@@@chenkbox:"+checkBox.isChecked());
         return checkBox.isChecked();
     }
 }

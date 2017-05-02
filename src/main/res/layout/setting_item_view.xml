@@ -22,6 +22,8 @@
         android:text="自动更新开启"
         />
     <CheckBox
+        android:clickable="false"
+        android:focusable="false"
         android:id="@+id/cb_setting"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"

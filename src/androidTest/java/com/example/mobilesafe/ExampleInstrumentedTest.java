@@ -4,8 +4,14 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.example.mobilesafe.domain.ContactsInfo;
+import com.example.mobilesafe.engine.ContactsEngine;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -22,5 +28,14 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getTargetContext();
 
         assertEquals("com.example.mobilesafe", appContext.getPackageName());
+    }
+    @Test
+    public void getContacts(){
+        ContactsEngine contactsEngine = new ContactsEngine();
+        List<ContactsInfo> contactsInfoList = new ArrayList<ContactsInfo>();
+        contactsInfoList =contactsEngine.getAllContactsInfos(InstrumentationRegistry.getTargetContext());
+        for(ContactsInfo c: contactsInfoList){
+            System.out.println(c.toString());
+        }
     }
 }
