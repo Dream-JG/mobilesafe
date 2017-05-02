@@ -4,4 +4,6 @@
     <string name="title_activity_setup1">Setup1Activity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="sample_device_admin_description">激活后才可以开启手机防盗</string>
+    <string name="sample_device_admin">/sample_device_admin</string>
 </resources>

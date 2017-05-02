@@ -1,9 +1,11 @@
 package com.example.mobilesafe;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.example.mobilesafe.Service.GPSService;
 import com.example.mobilesafe.domain.ContactsInfo;
 import com.example.mobilesafe.engine.ContactsEngine;
 
@@ -37,5 +39,10 @@ public class ExampleInstrumentedTest {
         for(ContactsInfo c: contactsInfoList){
             System.out.println(c.toString());
         }
+    }
+    @Test
+    public void getGPS(){
+        Intent intent = new Intent(InstrumentationRegistry.getTargetContext(), GPSService.class);
+        InstrumentationRegistry.getTargetContext().startService(intent);
     }
 }
