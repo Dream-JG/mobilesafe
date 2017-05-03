@@ -6,6 +6,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.example.mobilesafe.Service.GPSService;
+import com.example.mobilesafe.db.dao.AddressDao;
 import com.example.mobilesafe.domain.ContactsInfo;
 import com.example.mobilesafe.engine.ContactsEngine;
 
@@ -44,5 +45,11 @@ public class ExampleInstrumentedTest {
     public void getGPS(){
         Intent intent = new Intent(InstrumentationRegistry.getTargetContext(), GPSService.class);
         InstrumentationRegistry.getTargetContext().startService(intent);
+    }
+    @Test
+    public void openDb(){
+        AddressDao dao = new AddressDao();
+        String address=dao.queryAddress(InstrumentationRegistry.getTargetContext(),"13027724058");
+        System.out.println(address);
     }
 }

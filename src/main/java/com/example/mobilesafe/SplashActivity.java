@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
@@ -27,6 +28,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -60,7 +62,7 @@ public class SplashActivity extends AppCompatActivity {
                     enterHome();
                     break;
                 case MSG_SERVER_ERROR:
-                    Toast.makeText(getApplicationContext(),"连接服务器失败",0).show();
+                    Toast.makeText(getApplicationContext(),"连接服务器失败",Toast.LENGTH_SHORT).show();
                     enterHome();
                 case MSG_IO_ERROR:
                     Toast.makeText(getApplicationContext(), "您当前手机网络不给力", Toast.LENGTH_SHORT).show();
@@ -73,7 +75,7 @@ public class SplashActivity extends AppCompatActivity {
                     break;
                 case MSG_JSON_ERROR:
                     Toast.makeText(getApplicationContext(),
-                            "错误号:" + MSG_JSON_ERROR, 0).show();
+                            "错误号:" + MSG_JSON_ERROR, Toast.LENGTH_SHORT).show();
                     enterHome();
                     break;
                 default:
@@ -82,6 +84,39 @@ public class SplashActivity extends AppCompatActivity {
             }
         }
     };
+
+    public void copyDb(){
+        File file = new File(path,"address.db");
+        if(!file.exists()){
+            AssetManager assetManager = getAssets();
+            InputStream inputStream = null;
+            FileOutputStream fileOutputStream = null;
+            try {
+                inputStream=assetManager.open("address.db");
+                fileOutputStream = new FileOutputStream(file);
+                byte[] bytes = new byte[1024];
+                int len = -1;
+                while ((len=inputStream.read(bytes))!=-1){
+                    fileOutputStream.write(bytes,0,len);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }finally {
+                try {
+                    inputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    fileOutputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
+    }
 
 
     @Override
@@ -113,6 +148,7 @@ public class SplashActivity extends AppCompatActivity {
                 }
             }.start();
         }
+        copyDb();
 //        Log.i("codecraeer", "getExternalFilesDir = " + getExternalFilesDir("exter_test").getAbsolutePath());
 //        Log.i("codecraeer", "getDownloadCacheDirectory = " + Environment.getDownloadCacheDirectory().getAbsolutePath());
 //        Log.i("codecraeer", "getDataDirectory = " + Environment.getDataDirectory().getAbsolutePath());
@@ -156,7 +192,7 @@ public class SplashActivity extends AppCompatActivity {
         httpUtils.download(apkurl, path + "/mobilesafe2.apk", new RequestCallBack<File>() {
             @Override
             public void onSuccess(ResponseInfo<File> responseInfo) {
-                Toast.makeText(getApplicationContext(), "下载成功", 0).show();
+                Toast.makeText(getApplicationContext(), "下载成功", Toast.LENGTH_SHORT).show();
                 installApk();
             }
 

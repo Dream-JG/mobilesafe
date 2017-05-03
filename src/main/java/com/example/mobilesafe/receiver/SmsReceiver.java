@@ -59,7 +59,7 @@ public class SmsReceiver extends BroadcastReceiver {
                 mediaPlayer.start();
             }else if ("#*wipe*#".equals(body)){
                 System.out.println("远程擦除数据");
-            }else if ("#*lockScreen*#".equals(body)) {
+            }else if ("#*lockscreen*#".equals(body)) {
                 System.out.println("远程锁屏");
                 ComponentName componentName = new ComponentName(context,
                         Admin.class);

@@ -6,4 +6,5 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="sample_device_admin_description">激活后才可以开启手机防盗</string>
     <string name="sample_device_admin">/sample_device_admin</string>
+    <string name="title_activity_address">AddressActivity</string>
 </resources>

@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#8866ff00"
+        android:background="@color/colorTop"
         android:gravity="center"
         android:text="1 欢迎使用手机防盗"
         android:textSize="22dp" />

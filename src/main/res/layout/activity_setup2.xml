@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dip"
-        android:background="#8866ff00"
+        android:background="@color/colorTop"
         android:gravity="center"
         android:text="2 手机卡绑定"
         android:textSize="22sp" />

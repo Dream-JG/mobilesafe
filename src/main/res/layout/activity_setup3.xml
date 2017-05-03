@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dip"
-        android:background="#8866ff00"
+        android:background="@color/colorTop"
         android:gravity="center"
         android:text="3 设置安全号码"
         android:textSize="22sp" />

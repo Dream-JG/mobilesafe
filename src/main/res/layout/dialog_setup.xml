@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#8866ff00"
+        android:background="@color/colorTop"
         android:gravity="center"
         android:text="设置密码"
         android:textSize="18sp"
