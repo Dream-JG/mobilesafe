@@ -58,11 +58,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".AddressActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-
-        </activity>
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
 
         <receiver android:name=".receiver.BootCompleteReceiver">
             <intent-filter android:priority="1000">
@@ -92,6 +88,11 @@
                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
             </intent-filter>
         </receiver>
+
+        <service
+            android:name=".Service.AddressService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

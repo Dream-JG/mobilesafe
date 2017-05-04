@@ -6,6 +6,11 @@
         <attr name="desOff" format="string" />
     </declare-styleable>
 
+    <declare-styleable name="SettingClickItem">
+        <attr name="cliecktitle" format="string" />
+        <attr name="des" format="string" />
+    </declare-styleable>
+
     <!-- Declare custom theme attributes that allow changing which styles are
          used for button bars depending on the API level.
          ?android:attr/buttonBarStyle is new as of API 11 so this is

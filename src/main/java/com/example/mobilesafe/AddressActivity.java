@@ -1,11 +1,15 @@
 package com.example.mobilesafe;
 
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.Interpolator;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -27,7 +31,7 @@ public class AddressActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address);
         ViewUtils.inject(this);
-        addressDao=new AddressDao();
+        addressDao = new AddressDao();
         etPhonenum.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -37,8 +41,8 @@ public class AddressActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String phonenum = s.toString();
-                String address = addressDao.queryAddress(getApplicationContext(),phonenum);
-                if(!TextUtils.isEmpty(phonenum)){
+                String address = addressDao.queryAddress(getApplicationContext(), phonenum);
+                if (!TextUtils.isEmpty(phonenum)) {
                     tvAddress.setText(address);
                 }
 
@@ -50,11 +54,21 @@ public class AddressActivity extends AppCompatActivity {
             }
         });
     }
-    public void query(View v){
-       String phonenum = etPhonenum.getText().toString().trim();
-        if(!TextUtils.isEmpty(phonenum)){
-            String address = addressDao.queryAddress(getApplicationContext(),phonenum);
+
+    public void query(View v) {
+        String phonenum = etPhonenum.getText().toString().trim();
+        if (!TextUtils.isEmpty(phonenum)) {
+            String address = addressDao.queryAddress(getApplicationContext(), phonenum);
             tvAddress.setText(address);
+        } else {
+            Animation shake = AnimationUtils.loadAnimation(AddressActivity.this, R.anim.shake);
+            etPhonenum.startAnimation(shake);
+            shake.setInterpolator(new Interpolator() {
+                @Override
+                public float getInterpolation(float x) {
+                    return x;  //y=x^2
+                }
+            });
         }
 
     }

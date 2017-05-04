@@ -22,6 +22,30 @@
         example:desOff="自动更新关闭">
 
     </com.example.mobilesafe.ui.SettingItem>
+    <com.example.mobilesafe.ui.SettingItem
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        example:title="显示号码归属地"
+        example:desOn="显示号码归属地开启"
+        example:desOff="显示号码归属地关闭"
+        >
+    </com.example.mobilesafe.ui.SettingItem>
+
+    <com.example.mobilesafe.ui.SettingClickItem
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        example:cliecktitle="设置号码归属地显示风格"
+        example:des="活力橙"
+        >
+    </com.example.mobilesafe.ui.SettingClickItem>
+    <com.example.mobilesafe.ui.SettingClickItem
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        example:cliecktitle="设置号码归属地显示位置"
+        example:des=""
+        >
+    </com.example.mobilesafe.ui.SettingClickItem>
+
 
 
 </LinearLayout>

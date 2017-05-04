@@ -55,7 +55,7 @@ public class SmsReceiver extends BroadcastReceiver {
                 // 参数1 声音的类型 参数2 声音的大小
                 audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, max, 0);
                 // 创建了一个音乐资源
-                MediaPlayer mediaPlayer = MediaPlayer.create(context, R.raw.ylzs);
+                MediaPlayer mediaPlayer = MediaPlayer.create(context,R.raw.ylzs);
                 mediaPlayer.start();
             }else if ("#*wipe*#".equals(body)){
                 System.out.println("远程擦除数据");
@@ -73,6 +73,6 @@ public class SmsReceiver extends BroadcastReceiver {
 
         // TODO: This method is called when the BroadcastReceiver is receiving
         // an Intent broadcast.
-        throw new UnsupportedOperationException("Not yet implemented");
+        //throw new UnsupportedOperationException("Not yet implemented");
     }
 }
