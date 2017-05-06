@@ -23,6 +23,7 @@
 
     </com.example.mobilesafe.ui.SettingItem>
     <com.example.mobilesafe.ui.SettingItem
+        android:id="@+id/si_sercice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         example:title="显示号码归属地"
@@ -32,6 +33,7 @@
     </com.example.mobilesafe.ui.SettingItem>
 
     <com.example.mobilesafe.ui.SettingClickItem
+        android:id="@+id/sci_address_bg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         example:cliecktitle="设置号码归属地显示风格"
@@ -39,6 +41,7 @@
         >
     </com.example.mobilesafe.ui.SettingClickItem>
     <com.example.mobilesafe.ui.SettingClickItem
+        android:id="@+id/sci_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         example:cliecktitle="设置号码归属地显示位置"

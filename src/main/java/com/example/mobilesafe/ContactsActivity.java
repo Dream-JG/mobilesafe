@@ -14,8 +14,10 @@ import android.widget.TextView;
 
 import com.example.mobilesafe.domain.ContactsInfo;
 import com.example.mobilesafe.engine.ContactsEngine;
-import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.view.annotation.ViewInject;
+
+
+import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
 
 import java.util.List;
 
@@ -30,7 +32,8 @@ public class ContactsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
-        ViewUtils.inject(this);
+        x.view().inject(this);
+
         new MyAsyncTask().execute();
         lvContacts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

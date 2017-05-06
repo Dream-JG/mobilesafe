@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import com.example.mobilesafe.R;
 import com.example.mobilesafe.db.dao.AddressDao;
-import com.lidroid.xutils.view.annotation.ViewInject;
+
 
 public class AddressService extends Service {
     private TelephonyManager manager;
@@ -65,7 +65,7 @@ public class AddressService extends Service {
         filter.addAction("android.intent.action.NEW_OUTGOING_CALL");
         registerReceiver(callReceive,filter);
 
-        manager = (TelephonyManager) getSystemService(TELECOM_SERVICE);
+        manager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
         myPhoneStareLierner = new MyPhoneStateListener();
         manager.listen(myPhoneStareLierner,PhoneStateListener.LISTEN_CALL_STATE);
 
@@ -85,6 +85,7 @@ public class AddressService extends Service {
                     break;
                 case TelephonyManager.CALL_STATE_RINGING: //响铃状态
                     String address = dao.queryAddress(getApplicationContext(), incomingNumber);
+                    System.out.println("电话来了"+address);
                     showMyToast(address);
                     break;
                 case TelephonyManager.CALL_STATE_OFFHOOK:  //通话的状态
@@ -97,11 +98,9 @@ public class AddressService extends Service {
     }
 
         public void showMyToast(String address) {
-//            int[] bgcolor = new int[]{R.drawable.call_locate_white,
-//                    R.drawable.call_locate_orange, R.drawable.call_locate_blue,
-//                    R.drawable.call_locate_gray, R.drawable.call_locate_green};
-            int [] bgcolor = new int[]{
-            };
+            int[] bgcolor = new int[]{R.drawable.call_locate_white,
+                    R.drawable.call_locate_orange, R.drawable.call_locate_blue,
+                    R.drawable.call_locate_gray, R.drawable.call_locate_green};
             wm = (WindowManager) getSystemService(WINDOW_SERVICE);
             view = View.inflate(getApplicationContext(), R.layout.toast_custom, null);
             view.setBackgroundResource(bgcolor[sharedPreferences.getInt("toastcolor", 0)]);
@@ -117,7 +116,7 @@ public class AddressService extends Service {
             params.type = WindowManager.LayoutParams.TYPE_PRIORITY_PHONE; // 高优先级的弹出框
             params.gravity = Gravity.LEFT | Gravity.TOP; // 以左上角对齐
             params.x = sharedPreferences.getInt("x", 100);
-            params.y = sharedPreferences.getInt("y", 100);
+            params.y = sharedPreferences.getInt("y", 50);
             wm.addView(view, params);
 
         }
@@ -153,6 +152,7 @@ public class AddressService extends Service {
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt("x",params.x);
                         editor.putInt("y",params.y);
+                        editor.apply();
                         editor.commit();
                         break;
                     default:
@@ -175,6 +175,11 @@ public class AddressService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (callReceive!=null){
+            unregisterReceiver(callReceive);
+            callReceive=null;
+        }
+        manager.listen(myPhoneStareLierner,PhoneStateListener.LISTEN_NONE);
 
     }
 }

@@ -53,11 +53,11 @@ public class SettingClickItem extends RelativeLayout {
 
     }
 
-    public void setTvTitle(String title) {
+    public void cliecktitle(String title) {
         tvTitle.setText(title);
     }
 
-    public void setTvDes(String des) {
+    public void setDes(String des) {
         tvDes.setText(des);
 
     }

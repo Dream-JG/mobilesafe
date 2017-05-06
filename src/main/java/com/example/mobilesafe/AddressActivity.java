@@ -3,6 +3,7 @@ package com.example.mobilesafe;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.ViewUtils;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -11,13 +12,14 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
+
 import android.widget.TextView;
 
 import com.example.mobilesafe.db.dao.AddressDao;
-import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.view.annotation.ViewInject;
+
+import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
+
 
 public class AddressActivity extends AppCompatActivity {
     @ViewInject(R.id.et_phonenum)
@@ -30,7 +32,8 @@ public class AddressActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address);
-        ViewUtils.inject(this);
+        x.view().inject(this);
+       // ViewUtils.inject(this);
         addressDao = new AddressDao();
         etPhonenum.addTextChangedListener(new TextWatcher() {
             @Override

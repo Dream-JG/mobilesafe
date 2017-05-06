@@ -18,14 +18,15 @@ import android.widget.Toast;
 
 
 import com.example.mobilesafe.untils.StreamUtils;
-import com.lidroid.xutils.HttpUtils;
-import com.lidroid.xutils.exception.HttpException;
-import com.lidroid.xutils.http.ResponseInfo;
-import com.lidroid.xutils.http.callback.RequestCallBack;
+
 
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
+
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -126,6 +127,7 @@ public class SplashActivity extends AppCompatActivity {
         tvVersionName = (TextView) findViewById(R.id.tv_splash_version);
         tvVersionName.setText("版本号：" + getVersionName());
         path = getExternalFilesDir("/").getAbsolutePath();
+        x.view().inject(this);
 
 //        File file = new File(path);
 //        if (!file.exists()) {
@@ -187,28 +189,74 @@ public class SplashActivity extends AppCompatActivity {
 
     //下载新本版
     private void download() {
-        HttpUtils httpUtils = new HttpUtils();
-        System.out.println("------------" + path);
-        httpUtils.download(apkurl, path + "/mobilesafe2.apk", new RequestCallBack<File>() {
+        RequestParams params = new RequestParams(apkurl);
+        params.setSaveFilePath(path+"/mobilesafe2.apk");
+        params.setAutoRename(true);
+        x.http().post(params, new Callback.ProgressCallback<File>() {
             @Override
-            public void onSuccess(ResponseInfo<File> responseInfo) {
+            public void onSuccess(File result) {
                 Toast.makeText(getApplicationContext(), "下载成功", Toast.LENGTH_SHORT).show();
                 installApk();
             }
 
             @Override
-            public void onFailure(HttpException e, String s) {
-                e.printStackTrace();
+            public void onError(Throwable ex, boolean isOnCallback) {
+
             }
 
             @Override
-            public void onLoading(long total, long current, boolean isUploading) {
-                super.onLoading(total, current, isUploading);
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+
+            @Override
+            public void onWaiting() {
+
+            }
+
+            @Override
+            public void onStarted() {
+
+            }
+
+            @Override
+            public void onLoading(long total, long current, boolean isDownloading) {
                 AlertDialog.Builder dBuilder = new AlertDialog.Builder(SplashActivity.this);
-                dBuilder.setTitle("正在下载");
-                dBuilder.setMessage(current + "/" + total);
+               dBuilder.setTitle("正在下载");
+               dBuilder.setMessage(current + "/" + total);
+
             }
         });
+
+
+
+//        HttpUtils httpUtils = new HttpUtils();
+//        System.out.println("------------" + path);
+//        httpUtils.download(apkurl, path + "/mobilesafe2.apk", new RequestCallBack<File>() {
+//            @Override
+//            public void onSuccess(ResponseInfo<File> responseInfo) {
+//                Toast.makeText(getApplicationContext(), "下载成功", Toast.LENGTH_SHORT).show();
+//                installApk();
+//            }
+//
+//            @Override
+//            public void onFailure(HttpException e, String s) {
+//                e.printStackTrace();
+//            }
+//
+//            @Override
+//            public void onLoading(long total, long current, boolean isUploading) {
+//                super.onLoading(total, current, isUploading);
+//                AlertDialog.Builder dBuilder = new AlertDialog.Builder(SplashActivity.this);
+//                dBuilder.setTitle("正在下载");
+//                dBuilder.setMessage(current + "/" + total);
+//            }
+//        });
     }
 
     private void installApk() {
