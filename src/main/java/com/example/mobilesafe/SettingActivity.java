@@ -13,6 +13,7 @@ import android.support.v7.app.NotificationCompat;
 import android.view.View;
 
 import com.example.mobilesafe.Service.AddressService;
+import com.example.mobilesafe.Service.BlackNumService;
 import com.example.mobilesafe.ui.SettingClickItem;
 import com.example.mobilesafe.ui.SettingItem;
 import com.example.mobilesafe.untils.ServiceUtils;
@@ -29,6 +30,8 @@ public class SettingActivity extends AppCompatActivity {
     private SettingClickItem sciLocation;
     @ViewInject(R.id.sci_address_bg)
     private SettingClickItem sciAddressBg;
+    @ViewInject(R.id.si_black_num)
+    private SettingItem siBlackNum;
     private SharedPreferences sharedPreferences;
 
     @Override
@@ -137,5 +140,29 @@ public class SettingActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         addressSercive();
+        blackNumService();
+    }
+
+    private void blackNumService() {
+        if (ServiceUtils.isServiceRunning("com.example.mobilesafe.Service.BlackNumService", SettingActivity.this)) {
+            siBlackNum.setChecked(true);
+        } else {
+            siBlackNum.setChecked(false);
+        }
+        siBlackNum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), BlackNumService.class);
+                if (siBlackNum.checked()) {
+                    stopService(intent);
+                    System.out.println("短信服务关闭了");
+                    siBlackNum.setChecked(false);
+                } else {
+                    startService(intent);
+                    System.out.println("短信服务开启了");
+                    siBlackNum.setChecked(true);
+                }
+            }
+        });
     }
 }

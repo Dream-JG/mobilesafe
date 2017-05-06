@@ -13,11 +13,10 @@
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
-
 
     <application
         android:name=".MyApplication"
@@ -64,9 +63,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".AddressActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <receiver android:name=".receiver.BootCompleteReceiver">
             <intent-filter android:priority="1000">
@@ -97,19 +94,20 @@
             </intent-filter>
         </receiver>
 
+        <service android:name=".Service.AddressService"></service>
+        <service android:name=".Service.GPSService"></service>
 
-        <service android:name=".Service.AddressService">
+        <activity
+            android:name=".DragViewActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity
+            android:name=".CallSmsSafeActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
 
-        </service>
-
-        <service android:name=".Service.GPSService">
-
-        </service>
-
-        <activity android:name=".DragViewActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-        </activity>
+        <service
+            android:name=".Service.BlackNumService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

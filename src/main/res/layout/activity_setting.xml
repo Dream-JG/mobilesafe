@@ -48,6 +48,15 @@
         example:des=""
         >
     </com.example.mobilesafe.ui.SettingClickItem>
+    <com.example.mobilesafe.ui.SettingItem
+        android:id="@+id/si_black_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        example:title="黑名单拦截"
+        example:desOn="黑名单拦截开启"
+        example:desOff="黑名单拦截关闭"
+        >
+    </com.example.mobilesafe.ui.SettingItem>
 
 
 

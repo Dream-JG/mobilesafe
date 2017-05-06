@@ -46,6 +46,10 @@ public class HomeActivity extends AppCompatActivity {
                             showEnterDiolog();
                         }
                         break;
+                    case 1:
+                        Intent intent1 = new Intent(HomeActivity.this,CallSmsSafeActivity.class);
+                        startActivity(intent1);
+                        break;
                     case 7:
                         Intent intent7 = new Intent(HomeActivity.this,AToolsActivity.class);
                         startActivity(intent7);
@@ -109,7 +113,6 @@ public class HomeActivity extends AppCompatActivity {
         builder.setView(view);
         dialog = builder.create();
         dialog.show();
-        dialog.setCancelable(false);
 
 
     }

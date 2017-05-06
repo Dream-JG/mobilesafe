@@ -23,6 +23,8 @@ public class AddressDao {
                             new String[]{num.substring(0, 7)});
             if (cursor.moveToNext()) {
                 location = cursor.getString(0);
+            }else{
+                location="未知号码";
             }
             cursor.close();
         } else {

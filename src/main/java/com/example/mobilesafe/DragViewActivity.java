@@ -38,10 +38,10 @@ public class DragViewActivity extends AppCompatActivity {
         int x = sharedPreferences.getInt("x", 0);
         int y = sharedPreferences.getInt("y", 0);
         System.out.println(x + "---" + y);
-        if(x<0||y>widthPixels||y<0||y>heightPixels-25){
-            x=widthPixels/2;
-            y=0;
-        }
+//        if(x<0||y>widthPixels||y<0||y>heightPixels-25){
+//            x=widthPixels/2;
+//            y=0;
+//        }
 
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) llToast.getLayoutParams();
         params.leftMargin = x;
