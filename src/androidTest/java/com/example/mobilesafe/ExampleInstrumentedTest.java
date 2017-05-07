@@ -2,6 +2,7 @@ package com.example.mobilesafe;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -62,7 +63,7 @@ public class ExampleInstrumentedTest {
     }
     @Test
     public void creatDb(){
-        BlackNumOpenHelper helper =new BlackNumOpenHelper(InstrumentationRegistry.getTargetContext());
+        BlackNumOpenHelper helper =new BlackNumOpenHelper(InstrumentationRegistry.getContext());
     }
 
     @Test

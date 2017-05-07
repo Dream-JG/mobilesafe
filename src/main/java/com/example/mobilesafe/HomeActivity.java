@@ -50,6 +50,11 @@ public class HomeActivity extends AppCompatActivity {
                         Intent intent1 = new Intent(HomeActivity.this,CallSmsSafeActivity.class);
                         startActivity(intent1);
                         break;
+                    case 2:
+                        Intent intent2 = new Intent(HomeActivity.this,SoftManagerAcitivity.class);
+                        startActivity(intent2);
+                        break;
+
                     case 7:
                         Intent intent7 = new Intent(HomeActivity.this,AToolsActivity.class);
                         startActivity(intent7);
