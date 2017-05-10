@@ -84,8 +84,7 @@ public class SettingActivity extends AppCompatActivity {
     private void update() {
         if (sharedPreferences.getBoolean("update", true)) {
             siUpdate.setChecked(true);
-        }
-        {
+        }else {
             siUpdate.setChecked(false);
         }
         siUpdate.setOnClickListener(new View.OnClickListener() {

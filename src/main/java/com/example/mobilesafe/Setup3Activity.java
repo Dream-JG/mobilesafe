@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.SystemClock;
 import android.provider.Contacts;
 import android.support.annotation.Nullable;
 import android.os.Bundle;

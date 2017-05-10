@@ -8,6 +8,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
 import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
 
 
 public class Setup4Activity extends SetupBaseActivity {
@@ -20,6 +21,7 @@ public class Setup4Activity extends SetupBaseActivity {
         super.onCreate(savedInstanceState);
         sharedPreferences= getSharedPreferences("config",MODE_PRIVATE);
         setContentView(R.layout.activity_setup4);
+        x.view().inject(this);
         if (sharedPreferences.getBoolean("protected", false)) {
             cbLostfind.setChecked(true);
             cbLostfind.setText("你开启了手机防盗保护");

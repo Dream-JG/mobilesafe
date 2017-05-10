@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -51,10 +52,13 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(intent1);
                         break;
                     case 2:
-                        Intent intent2 = new Intent(HomeActivity.this,SoftManagerAcitivity.class);
+                        Intent intent2 = new Intent(HomeActivity.this,SoftManagerActivity.class);
                         startActivity(intent2);
                         break;
-
+                    case 3:
+                        Intent intent3 = new Intent(HomeActivity.this,TaskManagerActivity.class);
+                        startActivity(intent3);
+                        break;
                     case 7:
                         Intent intent7 = new Intent(HomeActivity.this,AToolsActivity.class);
                         startActivity(intent7);
@@ -192,6 +196,10 @@ public class HomeActivity extends AppCompatActivity {
                 ivIcon = (ImageView) convertView.findViewById(R.id.iv_icon);
                 tvName = (TextView) convertView.findViewById(R.id.tv_name);
             }
+            AbsListView.LayoutParams params = new AbsListView.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT, 250
+            );
+            convertView.setLayoutParams(params);
             ivIcon.setImageResource(imageId[position]);
             tvName.setText(names[position]);
             return convertView;

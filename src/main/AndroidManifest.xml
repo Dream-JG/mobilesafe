@@ -30,7 +30,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".SplashActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/TranslucentTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,7 +39,7 @@
         </activity>
         <activity
             android:name=".HomeActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/TranslucentTheme" />
         <activity
             android:name=".SettingActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -112,7 +112,12 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".SoftManagerAcitivity"
+        <activity
+            android:name=".SoftManagerActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        </activity>
+        <activity android:name=".TaskManagerActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>

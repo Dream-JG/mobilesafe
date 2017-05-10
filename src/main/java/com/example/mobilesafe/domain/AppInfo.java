@@ -10,7 +10,7 @@ public class AppInfo {
     private String name;
     private String versionName;
     private Drawable icon;
-    private String pacageName;
+    private String packageName;
     private boolean isSd;
     private boolean isUser;
 
@@ -18,11 +18,11 @@ public class AppInfo {
         super();
     }
 
-    public AppInfo(String name, String versionName, Drawable icon, String pacageName, boolean isSd, boolean isUser) {
+    public AppInfo(String name, String versionName, Drawable icon, String packageName, boolean isSd, boolean isUser) {
         this.name = name;
         this.versionName = versionName;
         this.icon = icon;
-        this.pacageName = pacageName;
+        this.packageName = packageName;
         this.isSd = isSd;
         this.isUser = isUser;
     }
@@ -33,7 +33,7 @@ public class AppInfo {
                 "name='" + name + '\'' +
                 ", versionName='" + versionName + '\'' +
                 ", icon=" + icon +
-                ", pacageName='" + pacageName + '\'' +
+                ", packageName='" + packageName + '\'' +
                 ", isSd=" + isSd +
                 ", isUser=" + isUser +
                 '}';
@@ -63,12 +63,12 @@ public class AppInfo {
         this.icon = icon;
     }
 
-    public String getPacageName() {
-        return pacageName;
+    public String getPackageName() {
+        return packageName;
     }
 
-    public void setPacageName(String pacageName) {
-        this.pacageName = pacageName;
+    public void setPackageName(String packageName) {
+        this.packageName = packageName;
     }
 
     public boolean isSd() {

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.mobilesafe.SoftManagerAcitivity">
+    tools:context="com.example.mobilesafe.SoftManagerActivity">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dip"
@@ -13,9 +13,30 @@
         android:gravity="center"
         android:text="软件管理"
         android:textSize="22sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_rom"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:text="手机内部可用空间:100M"
+            android:textSize="16sp"/>
+        <TextView
+            android:id="@+id/tv_sd"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:text="SD卡可用空间:100M"
+            android:textSize="16sp"/>
+    </LinearLayout>
     <FrameLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <ListView
             android:id="@+id/lv_apps"
@@ -25,14 +46,14 @@
         </ListView>
 
         <TextView
-            android:id="@+id/tv_count"
+            android:id="@+id/tvProgress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#888888"
             android:textColor="#fff" />
 
         <ProgressBar
-            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_gravity="center"
             android:id="@+id/pb_apps"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

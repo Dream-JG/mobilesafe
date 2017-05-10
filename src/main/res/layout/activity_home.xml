@@ -4,24 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.example.mobilesafe.HomeActivity">
+    android:background="@drawable/homebg"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.mobilesafe.HomeActivity"
+    android:baselineAligned="false"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/colorTop"
         android:gravity="center"
         android:text="功能列表"
-        android:textSize="22sp"/>
-
-    <GridView
-        android:id="@+id/gv_home"
+        android:textSize="22sp"
+        android:textColor="#fff"/>
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:numColumns="3"
-        android:layout_marginTop="10dp"
-        android:verticalSpacing="10dp">
-    </GridView>
+        android:layout_height="250dp">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#d4d4d4">
+        <GridView
+            android:id="@+id/gv_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:numColumns="3"
+            android:verticalSpacing="1dp"
+            android:horizontalSpacing="1dp">
+        </GridView>
+
+    </LinearLayout>
+
 
 </LinearLayout>
